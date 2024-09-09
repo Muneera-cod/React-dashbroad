@@ -4,7 +4,7 @@ export const sidebardata=[
     {
         title:'Dashboard',
         icon:<IconLayoutDashboardFilled/>,
-        link:'/dashboard'
+        link:'home'
     },
     {
         title:'Analytics',
@@ -13,7 +13,7 @@ export const sidebardata=[
     {
         title:'Invoice',
         icon:<IconFileInvoice/>,
-        link:'/invoicelist'
+        link:'invoicelist'
     },
     {
         title:'Schedule',
