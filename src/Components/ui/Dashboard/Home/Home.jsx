@@ -5,7 +5,9 @@ import '@mantine/charts/styles.css'
 // import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import { RingProgress,Text} from '@mantine/core';
 import shoe from '../../../../assets/shoe.jpg'
-import { orderdetailsdata } from '../../../OrderData';
+import { orderdetailsdata ,sellingproductdata} from '../Home/Homedata';
+import { data } from './Homedata';
+import { LineChart } from "@mantine/charts";
 import { useNavigate } from 'react-router-dom';
 function Home() {
   const [currentDate, setCurrentDate] = useState('');
@@ -89,7 +91,26 @@ function Home() {
                                               <IconDots className='pt-2'/>
                                             </div>
                                 </div>
-                                 <div className='flex-grow w-full h-full bg-gray-50'></div>
+                                 <div className='flex-grow w-full h-full bg-gray-50'>
+                                                              <LineChart
+                                            h={250}
+                                            w={"99%"}
+                                            data={data}
+                                            series={[{ name: "temperature", label: "Avg. Temperature" }]}
+                                            dataKey="date"
+                                            type="gradient"
+                                            gradientStops={[
+                                              { offset: 30, color: "violet.6" },
+                                              { offset: 10, color: "pink.6" },
+                                              { offset: 80, color: "indigo.5" },
+                                              { offset: 10, color: "lavendar.5" },
+                                              { offset: 80, color: "cyan.5" },
+                                              { offset: 50, color: "blue.5" },
+                                            ]}
+                                            strokeWidth={5}
+                                            curveType="natural"
+                                            yAxisProps={{ domain: [-25, 40] }} valueFormatter={(value) => `${value}°C`}/>
+                                 </div>
                             </div>
                            
                             <div className='basis-4/12 w-full h-full bg-white rounded flex flex-col p-4'> 
@@ -110,7 +131,8 @@ function Home() {
                                                   { value: 40, color: 'cyan' },
                                                   { value: 15, color: 'orange' },
                                                   { value: 15, color: 'grape' },
-                                              ]}/> */}</div>
+                                              ]}/> */}
+                                    </div>
                             </div>                      
                       </div>
                       
@@ -161,7 +183,7 @@ function Home() {
                                 </div>  
                              </div>
                              <div className='flex-grow w-full h-full bg-gray-50 flex flex-col p-4 rounded-lg gap-3'>
-                               <div className='flex  sm:flex-col md:flex-row gap-3'>
+                               {/* <div className='flex  sm:flex-col md:flex-row gap-3'>
                                    <img src={shoe} className='rounded'></img>
                                    <div className='flex flex-col gap-1'>
                                           <p className='text-gray-700'>Nike Shoes Black Pattern</p>
@@ -178,9 +200,9 @@ function Home() {
                                    
                                    
 
-                               </div>
+                               </div> */}{sellingproductdata.map((item) => {
                                   <div className='flex sm:flex-col md:flex-row gap-3'>
-                                   <img src={shoe} className='rounded '></img>
+                                   <img src={shoe} className='rounded size-20'></img>
                                    <div className='flex flex-col gap-1'>
                                           <p className=''>Nike Shoes Black Pattern</p>
                                           <div className='flex flex-row'>
@@ -196,7 +218,7 @@ function Home() {
                                    
                                    
 
-                               </div>
+                               </div> })}
                                 
                              </div>
                           </div>

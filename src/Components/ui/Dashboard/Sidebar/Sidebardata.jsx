@@ -8,7 +8,8 @@ export const sidebardata=[
     },
     {
         title:'Analytics',
-        icon:<IconChartBar/>
+        icon:<IconChartBar/>,
+         link:'analytics'
     },
     {
         title:'Invoice',

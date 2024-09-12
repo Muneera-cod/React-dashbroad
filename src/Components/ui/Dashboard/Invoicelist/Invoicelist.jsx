@@ -3,7 +3,7 @@ import { useState , useEffect}from 'react'
 import { IconSearch,IconTrashFilled,IconStarFilled,IconStar,IconDots} from '@tabler/icons-react';
 import profile from '../../../../assets/user_profile.jpg'
 // import {sidebardata} from '../Components/ui/Dashboard/Sidebar/Sidebardata';
-import {invoicelistdata} from '../../../Invoicelistdata'
+import { invoicelistdata } from './Invoicelistdata';
 import { useNavigate } from 'react-router-dom';
 
 function Invoicelist() {
