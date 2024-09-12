@@ -1,14 +1,15 @@
 import React ,{ useState , useEffect}from 'react'
-import { IconChevronDown,IconMenu2,IconBriefcaseFilled,IconHeartFilled,IconAlignBoxRightBottomFilled, IconShoppingBag,IconLogout,IconDots,IconStarFilled} from '@tabler/icons-react';
-import "./Dashboard.css"
+import { IconChevronDown,IconBriefcaseFilled,IconHeartFilled,IconAlignBoxRightBottomFilled, IconShoppingBag,IconDots,IconStarFilled} from '@tabler/icons-react';
+
 import '@mantine/charts/styles.css'
+// import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import { RingProgress,Text} from '@mantine/core';
-import profile from '../assets/user_profile.jpg'
-import shoe from '../assets/shoe1.jpg'
-import {sidebardata} from './Sidebar/Sidebardata';
-import { orderdetailsdata } from './OrderData';
+import shoe from '../../../../assets/shoe.jpg'
+import { orderdetailsdata ,sellingproductdata} from '../Home/Homedata';
+import { data } from './Homedata';
+import { LineChart } from "@mantine/charts";
 import { useNavigate } from 'react-router-dom';
-function Navbar() {
+function Home() {
   const [currentDate, setCurrentDate] = useState('');
 
   useEffect(() => {
@@ -17,52 +18,18 @@ function Navbar() {
     setCurrentDate(formattedDate);
   }, []);
 
-const [sidebar,setSidebar]=useState(false)
-const handlesidebar=()=>{
-    setSidebar(!sidebar)
-    console.log(sidebar)
-}
-const navigate=useNavigate()
+
+
 
   return (
     <>
-      <div className=' header bg-slate-200 w-screen min-h-screen app-container flex '>
-             
-                  <div className='lg:w-fit bg-white flex flex-col justify-between' >
-                      <div className='flex flex-col gap-14'>
-                        <div className='flex p-4'><IconMenu2 onClick={handlesidebar} text-gray-500/></div>
-                        <div className={`flex flex-col  ${sidebar?'':'flex items-center'}`}>
-                          {sidebardata.map((item)=>{
-                                          return(
-                                            <div className='flex flex-row gap-5  px-4 py-4 hover:bg-blue-100 text-gray-500 hover:text-blue-600' onClick={()=>navigate(item.link)}><div>{item.icon}</div><div className={`block ${sidebar?'':'hidden'}`}>{item.title}</div></div>
-                                          )
-                                        })
-                                      
-                                }
-                        </div>
-                      </div>
-                      <div className={`py-5 flex justify-center  items-center gap-3${sidebar?'':'py-5  flex flex-col justify-center  items-center gap-3'}`}>
-                          <div className='flex gap-2'>
-                            <img src={profile} className='size-8 w-10 rounded'></img>
-                            <div className={`block flex flex-col ${sidebar?'':'hidden'}`}>
-                              <h10 className='m-0 p-0 text-sm'>Username</h10>
-                              <p className='m-0 p-0 text-xs text-gray-400'>Free account</p>
-                            </div>
-                          </div>
-                          <IconLogout className='text-gray-500 hover:text-blue-600'/>
-                          
-                      </div>
 
-                  </div>
-   
-  
-     
                 <div className='w-full  flex flex-col gap-4 p-5 bg-slate-300'>
                     <div className='flex justify-between'>
                           <h1 className='font-bold  text-lg'>Dashboard</h1>
                           <div className=' flex gap-4'>
-                            <button className='bg-white text-gray-600'><span className='flex items-center justify-center'>{currentDate}<IconChevronDown/></span></button>
-                            <button className='bg-white text-gray-600'><span className='flex items-center justify-center'>{currentDate}<IconChevronDown/></span></button>
+                            <button className='bg-white text-gray-600 w-28 h-10 rounded-md'><span className='flex items-center justify-center'>{currentDate}<IconChevronDown/></span></button>
+                            <button className='bg-white text-gray-600 w-28 h-10 rounded-md'><span className='flex items-center justify-center'>{currentDate}<IconChevronDown/></span></button>
                           </div>
                     </div>
 
@@ -124,7 +91,26 @@ const navigate=useNavigate()
                                               <IconDots className='pt-2'/>
                                             </div>
                                 </div>
-                                 <div className='flex-grow w-full h-full bg-gray-100'></div>
+                                 <div className='flex-grow w-full h-full bg-gray-50'>
+                                                              <LineChart
+                                            h={250}
+                                            w={"99%"}
+                                            data={data}
+                                            series={[{ name: "temperature", label: "Avg. Temperature" }]}
+                                            dataKey="date"
+                                            type="gradient"
+                                            gradientStops={[
+                                              { offset: 30, color: "violet.6" },
+                                              { offset: 10, color: "pink.6" },
+                                              { offset: 80, color: "indigo.5" },
+                                              { offset: 10, color: "lavendar.5" },
+                                              { offset: 80, color: "cyan.5" },
+                                              { offset: 50, color: "blue.5" },
+                                            ]}
+                                            strokeWidth={5}
+                                            curveType="natural"
+                                            yAxisProps={{ domain: [-25, 40] }} valueFormatter={(value) => `${value}°C`}/>
+                                 </div>
                             </div>
                            
                             <div className='basis-4/12 w-full h-full bg-white rounded flex flex-col p-4'> 
@@ -134,7 +120,7 @@ const navigate=useNavigate()
                                             <IconDots className='pt-2'/>
                                           </div>
                                     </div>
-                                    <div className='flex-grow w-full h-full bg-gray-100'>
+                                    <div className='flex-grow w-full h-full bg-gray-50'>
                                             {/* <RingProgress
                                                 label={
                                                   <Text size="xs" ta="center">
@@ -145,21 +131,22 @@ const navigate=useNavigate()
                                                   { value: 40, color: 'cyan' },
                                                   { value: 15, color: 'orange' },
                                                   { value: 15, color: 'grape' },
-                                              ]}/> */}</div>
+                                              ]}/> */}
+                                    </div>
                             </div>                      
                       </div>
                       
                       
                       
                       <div className='basis-4/12 flex gap-5'>
-                          <div className='basis-8/12 w-full h-full bg-white rounded flex flex-col p-4'>
+                          <div className='basis-8/12 w-full h-full bg-white rounded flex flex-col p-4 '>
                                 <div className='flex-1 w-full h-full bg-white'>
                                    <div className='flex justify-between items-center'>
                                      <h4 className='text-lg text-gray-500 font-bold'>Recent Orders</h4>
                                      <IconDots className='pt-2'/>
                                    </div>
                                 </div>
-                                <div className='flex-grow w-full h-full bg-gray-100 rounded p-2'>
+                                <div className='flex-grow w-full h-full bg-gray-50 rounded p-2'>
                                   <div className='flex flex-col'>
                                       <div className='flex flex-row p-2'>
                                            <p className='flex-1 text-sm text-gray-700'>Tracking no</p>
@@ -195,8 +182,8 @@ const navigate=useNavigate()
                                   <IconDots className='pt-2'/>
                                 </div>  
                              </div>
-                             <div className='flex-grow w-full h-full bg-gray-100 flex flex-col p-4 rounded-lg gap-3'>
-                               <div className='flex gap-3'>
+                             <div className='flex-grow w-full h-full bg-gray-50 flex flex-col p-4 rounded-lg gap-3'>
+                               {/* <div className='flex  sm:flex-col md:flex-row gap-3'>
                                    <img src={shoe} className='rounded'></img>
                                    <div className='flex flex-col gap-1'>
                                           <p className='text-gray-700'>Nike Shoes Black Pattern</p>
@@ -213,9 +200,9 @@ const navigate=useNavigate()
                                    
                                    
 
-                               </div>
-                                  <div className='flex gap-3'>
-                                   <img src={shoe} className='rounded'></img>
+                               </div> */}{sellingproductdata.map((item) => {
+                                  <div className='flex sm:flex-col md:flex-row gap-3'>
+                                   <img src={shoe} className='rounded size-20'></img>
                                    <div className='flex flex-col gap-1'>
                                           <p className=''>Nike Shoes Black Pattern</p>
                                           <div className='flex flex-row'>
@@ -231,14 +218,14 @@ const navigate=useNavigate()
                                    
                                    
 
-                               </div>
+                               </div> })}
                                 
                              </div>
                           </div>
                       </div>                     
                   </div>
                  </div>
-             </div>
+            
     
     
     </>
@@ -246,4 +233,4 @@ const navigate=useNavigate()
   )
 }
 
-export default Navbar
+export default Home

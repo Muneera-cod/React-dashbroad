@@ -1,5 +1,5 @@
 import {  IconMailFilled, IconCalculatorFilled} from '@tabler/icons-react';
-import profile from '../assets/user_profile.jpg'
+import profile from '../../../../assets/user_profile.jpg'
 export const invoicelistdata=[
     {
         id:'#098765',

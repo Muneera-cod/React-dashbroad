@@ -4,16 +4,17 @@ export const sidebardata=[
     {
         title:'Dashboard',
         icon:<IconLayoutDashboardFilled/>,
-        link:'/dashboard'
+        link:'home'
     },
     {
         title:'Analytics',
-        icon:<IconChartBar/>
+        icon:<IconChartBar/>,
+         link:'analytics'
     },
     {
         title:'Invoice',
         icon:<IconFileInvoice/>,
-        link:'/invoicelist'
+        link:'invoicelist'
     },
     {
         title:'Schedule',
