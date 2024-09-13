@@ -18,7 +18,8 @@ export const sidebardata=[
     },
     {
         title:'Schedule',
-        icon:<IconListCheck/>
+        icon:<IconListCheck/>,
+        link:'schedule'
     },
     {
         title:'Calender',

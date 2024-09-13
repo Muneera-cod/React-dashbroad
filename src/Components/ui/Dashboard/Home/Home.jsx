@@ -1,14 +1,16 @@
 import React ,{ useState , useEffect}from 'react'
 import { IconChevronDown,IconBriefcaseFilled,IconHeartFilled,IconAlignBoxRightBottomFilled, IconShoppingBag,IconDots,IconStarFilled} from '@tabler/icons-react';
-
+// import { BiSolidCheckbox } from "react-icons/bi";
+import { DonutChart } from "@mantine/charts";
 import '@mantine/charts/styles.css'
 // import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import { RingProgress,Text} from '@mantine/core';
-import shoe from '../../../../assets/shoe.jpg'
+// import { RingProgress,Text} from '@mantine/core';
+// import shoe from '../../../../assets/shoe.jpg'
 import { orderdetailsdata ,sellingproductdata} from '../Home/Homedata';
-import { data } from './Homedata';
+import { data,data2 } from './Homedata';
 import { LineChart } from "@mantine/charts";
 import { useNavigate } from 'react-router-dom';
+import { Divider } from '@mantine/core';
 function Home() {
   const [currentDate, setCurrentDate] = useState('');
 
@@ -64,7 +66,7 @@ function Home() {
                                  <div className='w-16 h-16 bg-red-100 rounded-full flex items-center justify-center'>
                                   <IconShoppingBag stroke={2} className='text-red-400'/></div>
                                </div>
-                               <div className='flex-grow flex items-center'>
+                               <div className='flex-grow flex items-center p-4'>
                                    <div>
                                       <h4 className='font-bold text-2xl text-gray-600'>190+</h4>
                                       <p className='text-sm text-gray-500'>Sales Products</p>
@@ -93,7 +95,7 @@ function Home() {
                                 </div>
                                  <div className='flex-grow w-full h-full bg-gray-50'>
                                                               <LineChart
-                                            h={250}
+                                            h={"35vh"}
                                             w={"99%"}
                                             data={data}
                                             series={[{ name: "temperature", label: "Avg. Temperature" }]}
@@ -121,17 +123,25 @@ function Home() {
                                           </div>
                                     </div>
                                     <div className='flex-grow w-full h-full bg-gray-50'>
-                                            {/* <RingProgress
-                                                label={
-                                                  <Text size="xs" ta="center">
-                                                    Application data usage
-                                                  </Text>
-                                                }
-                                                sections={[
-                                                  { value: 40, color: 'cyan' },
-                                                  { value: 15, color: 'orange' },
-                                                  { value: 15, color: 'grape' },
-                                              ]}/> */}
+                                    <DonutChart data={ [
+    { name: "USA", value: 400, color: "indigo.6" },
+    { name: "India", value: 300, color: "yellow.6" },
+    { name: "Japan", value: 100, color: "teal.6" },
+  ]} className="w-full" chartLabel="80% Transactions"></DonutChart>
+                <div className="flex lg:flex-row gap-5 sm:flex-col">
+                    <div className="flex flex-row lg:items-center sm:items-start lg:justify-center gap-1 sm:justify-start">
+                        {/* <BiSolidCheckbox className="text-blue-500 size-6" /> */}
+                        <label className="text-gray-600">Sale</label>
+                    </div>
+                    <div className="flex flex-row lg:items-center sm:items-start lg:justify-center gap-1 sm:justify-start">
+                        {/* <BiSolidCheckbox className="text-yellow-200 size-6" /> */}
+                        <label  className="text-gray-600">Distribute</label>
+                    </div>
+                    <div className="flex flex-row lg:items-center sm:items-start lg:justify-center gap-1 sm:justify-start">
+                       {/* <BiSolidCheckbox className="text-red-200 size-6" /> */}
+                       <label  className="text-gray-600">Return</label>
+                    </div>   
+                </div>
                                     </div>
                             </div>                      
                       </div>
@@ -146,8 +156,8 @@ function Home() {
                                      <IconDots className='pt-2'/>
                                    </div>
                                 </div>
-                                <div className='flex-grow w-full h-full bg-gray-50 rounded p-2'>
-                                  <div className='flex flex-col'>
+                                <div className='flex-grow w-full  bg-gray-50 rounded p-2'>
+                                  <div className='flex flex-col '>
                                       <div className='flex flex-row p-2'>
                                            <p className='flex-1 text-sm text-gray-700'>Tracking no</p>
                                            <p className='flex-1 text-sm text-gray-700'>Product Name</p>
@@ -169,7 +179,7 @@ function Home() {
 
                                            <p className='flex-1 text-sm text-gray-600'>{items.totalamount}</p>
                                         </div>
-                                        )}) }
+                                        )}) }<hr/>
                                   </div>
                                    
                                    
@@ -183,28 +193,16 @@ function Home() {
                                 </div>  
                              </div>
                              <div className='flex-grow w-full h-full bg-gray-50 flex flex-col p-4 rounded-lg gap-3'>
-                               {/* <div className='flex  sm:flex-col md:flex-row gap-3'>
-                                   <img src={shoe} className='rounded'></img>
-                                   <div className='flex flex-col gap-1'>
-                                          <p className='text-gray-700'>Nike Shoes Black Pattern</p>
-                                          <div className='flex flex-row'>
-                                          <IconStarFilled className='text-yellow-400 text-xs size-4'/>
-                                          <IconStarFilled className='text-yellow-400 text-xs size-4'/>
-                                          <IconStarFilled className='text-yellow-400 text-xs size-4'/>
-                                          <IconStarFilled className='text-yellow-400 text-xs size-4'/>
-                                          <IconStarFilled className='text-yellow-400 text-xs size-4'/>
-                                          </div>
-                                          <p className='text-xs font-bold'>$159</p>
-
-                                   </div>
+                           
                                    
                                    
 
-                               </div> */}{sellingproductdata.map((item) => {
+                        {sellingproductdata.map((item) => {
+                          return(
                                   <div className='flex sm:flex-col md:flex-row gap-3'>
-                                   <img src={shoe} className='rounded size-20'></img>
+                                   <img src={item.img} className='rounded size-20'></img>
                                    <div className='flex flex-col gap-1'>
-                                          <p className=''>Nike Shoes Black Pattern</p>
+                                          <p className=''>{item.productname}</p>
                                           <div className='flex flex-row'>
                                           <IconStarFilled className='text-yellow-400 text-xs size-4'/>
                                           <IconStarFilled className='text-yellow-400 text-xs size-4'/>
@@ -212,13 +210,13 @@ function Home() {
                                           <IconStarFilled className='text-yellow-400 text-xs size-4'/>
                                           <IconStarFilled className='text-yellow-400 text-xs size-4'/>
                                           </div>
-                                          <p className='text-xs font-bold'>$159</p>
+                                          <p className='text-xs font-bold'>{item.price}</p>
 
                                    </div>
                                    
                                    
 
-                               </div> })}
+                               </div> )})}
                                 
                              </div>
                           </div>
