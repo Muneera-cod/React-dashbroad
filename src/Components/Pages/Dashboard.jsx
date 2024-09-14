@@ -17,7 +17,7 @@ function Dashboard() {
         
         </div>
        <div className={`flex gap-32${sidebar?'':'flex gap-2'}`} >
-        <div className={` w-14 h-screen ${sidebar?'':'w-14 h-screen'}`}></div>
+        <div className={` w-14 h-screen ${sidebar?'':'w-16 h-screen'}`}></div>
        
       
         <div className={`header bg-slate-200 w-full min-h-screen app-container flex ${sidebar?"":'header bg-slate-200  w-full min-h-screen app-container flex '}`}> 
