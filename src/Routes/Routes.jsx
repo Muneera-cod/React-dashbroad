@@ -5,6 +5,7 @@ import Invoicelist from '../Components/ui/Dashboard/Invoicelist/Invoicelist.jsx'
 // import Navbar from '../Components/ui/Dashboard/Home/Home.jsx';
 import Home from '../Components/ui/Dashboard/Home/Home.jsx';
 import { Analytics } from '../Components/ui/Dashboard/Analytics/Analytics.jsx';
+import Schedule from '../Components/ui/Dashboard/Schedule/Schedule.jsx';
 export const router=createBrowserRouter([
     {
         path:'/',
@@ -12,7 +13,7 @@ export const router=createBrowserRouter([
     },
     {
         path:'/dashboard',
-        element:<Dashboard/>,
+        element:<><Dashboard/></>,
         children:[
                 {
                     path:'home',
@@ -25,6 +26,11 @@ export const router=createBrowserRouter([
                 {
                     path: "analytics",
                     element: <Analytics />,
+                    
+                },
+                {
+                    path: "schedule",
+                    element: <Schedule/>,
                     
                 }
         ],

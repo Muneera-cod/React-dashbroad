@@ -1,35 +1,31 @@
 import React from 'react'
 import { IconMenu2,IconLogout } from '@tabler/icons-react';
 import { sidebardata } from './Sidebardata'
-import { useState } from 'react';
+// import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import profile from '../../../../assets/user_profile.jpg'
-function Sidebar() {
+function Sidebar(props) {
   
-const [sidebar,setSidebar]=useState(false)
-const handlesidebar=()=>{
-    setSidebar(!sidebar)
-    console.log(sidebar)
-}
+
 const navigate=useNavigate()
   return (
-    <div className='w-fit min-h-screen bg-white flex flex-col justify-between' >
+    <div className={`w-42 min-h-screen bg-white flex flex-col justify-between  ${props.sidebar?'':'w-fit min-h-screen bg-white flex flex-col justify-between'}`} >
     <div className='flex flex-col gap-14'>
-      <div className='flex p-4'><IconMenu2 onClick={handlesidebar} text-gray-500/></div>
-      <div className={`flex flex-col  ${sidebar?'':'flex items-center'}`}>
+      <div className='flex p-4'><IconMenu2 onClick={props.handlesidebar} text-gray-500/></div>
+      <div className={`flex flex-col  ${props.sidebar?'':'flex items-center'}`}>
         {sidebardata.map((item)=>{
                         return(
-                          <div className='flex flex-row gap-5  px-4 py-4 hover:bg-blue-100 text-gray-500 hover:text-blue-600' onClick={()=>navigate(item.link)}><div>{item.icon}</div><div className={`block ${sidebar?'':'hidden'}`}>{item.title}</div></div>
+                          <div className='flex flex-row gap-5  px-5 py-3 hover:bg-gradient-to-l from-white to-indigo-200 text-gray-500 hover:text-blue-600 borderleft' onClick={()=>navigate(item.link)} ><div>{item.icon}</div><div className={`block ${props.sidebar?'':'hidden'}`}>{item.title}</div></div>
                         )
                       })
                     
               }
       </div>
     </div>
-    <div className={`py-5 flex justify-center  items-center gap-3${sidebar?'':'py-5  flex flex-col justify-center  items-center gap-3'}`}>
+    <div className={`py-5 flex justify-center  items-center gap-3${props.sidebar?'':'py-5  flex flex-col justify-center  items-center gap-3'}`}>
         <div className='flex gap-2'>
           <img src={profile} className='size-8 w-10 rounded'></img>
-          <div className={`block flex flex-col ${sidebar?'':'hidden'}`}>
+          <div className={`block flex flex-col ${props.sidebar?'':'hidden'}`}>
             <h10 className='m-0 p-0 text-sm'>Username</h10>
             <p className='m-0 p-0 text-xs text-gray-400'>Free account</p>
           </div>

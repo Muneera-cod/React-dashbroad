@@ -50,7 +50,7 @@ function Customerlist() {
                     <div className='flex-1 flex justify-between items-center'>
                         {items.gender?<button className='w-28 h-10 rounded-full' style={{background: "rgba(255, 143, 107, 0.2)",color:' #ff8f6b'}}>Female</button>
                           :<button className='w-28 h-10 rounded-full' style={{background: "rgba(91, 147, 255, 0.2)",color:'#5B93FF'}}>Male</button>}
-                           <Popover width={150} position="bottom-right" withArrow shadow="lg">
+                           <Popover width={150}  position="bottom-right" withArrow shadow="lg">
                                 <PopoverTarget>
                                   <IconDots className='bg-["#030229"]'/>
                                 </PopoverTarget>
