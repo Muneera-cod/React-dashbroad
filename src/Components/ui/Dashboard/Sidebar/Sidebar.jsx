@@ -15,7 +15,7 @@ const navigate=useNavigate()
       <div className={`flex flex-col  ${props.sidebar?'':'flex items-center'}`}>
         {sidebardata.map((item)=>{
                         return(
-                          <div className='flex flex-row gap-5  px-5 py-3 hover:bg-blue-100 text-gray-500 hover:text-blue-600 borderleft' onClick={()=>navigate(item.link)} ><div>{item.icon}</div><div className={`block ${props.sidebar?'':'hidden'}`}>{item.title}</div></div>
+                          <div className='flex flex-row gap-5  px-5 py-3 hover:bg-gradient-to-l from-white to-indigo-200 text-gray-500 hover:text-blue-600 borderleft' onClick={()=>navigate(item.link)} ><div>{item.icon}</div><div className={`block ${props.sidebar?'':'hidden'}`}>{item.title}</div></div>
                         )
                       })
                     

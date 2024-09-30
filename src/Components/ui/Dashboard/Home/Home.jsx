@@ -131,15 +131,15 @@ function Home() {
                 <div className="flex lg:flex-row gap-5 sm:flex-col">
                     <div className="flex flex-row lg:items-center sm:items-start lg:justify-center gap-1 sm:justify-start">
                         {/* <BiSolidCheckbox className="text-blue-500 size-6" /> */}
-                        <label className="text-gray-600">Sale</label>
+                        {/* <label className="text-gray-600">Sale</label> */}
                     </div>
                     <div className="flex flex-row lg:items-center sm:items-start lg:justify-center gap-1 sm:justify-start">
                         {/* <BiSolidCheckbox className="text-yellow-200 size-6" /> */}
-                        <label  className="text-gray-600">Distribute</label>
+                        {/* <label  className="text-gray-600">Distribute</label> */}
                     </div>
                     <div className="flex flex-row lg:items-center sm:items-start lg:justify-center gap-1 sm:justify-start">
                        {/* <BiSolidCheckbox className="text-red-200 size-6" /> */}
-                       <label  className="text-gray-600">Return</label>
+                       {/* <label  className="text-gray-600">Return</label> */}
                     </div>   
                 </div>
                                     </div>
