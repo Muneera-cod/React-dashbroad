@@ -2,7 +2,7 @@ import { IconCalculatorFilled ,IconClockFilled,IconMapPinFilled,IconTrashFilled,
 import { data1 } from './Dataschedule'
 function Schedulelist() {
   return (
-    <div className='flex flex-col flex-grow basis-3/4 w-full h-full gap-3'>
+    <div className='flex flex-col flex-grow basis-3/4 min-w-screen h-full gap-3'>
         <div className='flex px-5 py-3 rounded-lg '>
           <div className='basis-1/3 flex  gap-3'>
             <label className='flex'><input type='checkbox'  className='size-5 accent-indigo-500'></input></label>
@@ -37,7 +37,7 @@ function Schedulelist() {
         </div>
         {data1.map((items)=>{
             return(
-                <div key={items.location} className='flex  px-5 py-3  rounded-lg bg-white items-center'>
+                <div key={items.location} className='flex  px-5 py-3  rounded-lg bg-white items-center overflow-auto'>
                     <div className='flex-1 flex flex-row gap-3'>
                     <label className='flex'><input type='checkbox'  className='size-5 accent-indigo-500'></input></label>
                         <IconCalculatorFilled  className='size-5 text-blue-400'/>

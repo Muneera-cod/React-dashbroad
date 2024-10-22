@@ -3,6 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  box-sizing: border-box;
+}
 .borderleft{
     border-left: 4px solid white;
     
@@ -10,4 +13,18 @@
     border-left:4px solid rgb(60, 99, 239) ;
   }
     
+}
+.scroll{
+scrollbar-width: thin; /* Options: auto, thin, none */
+scrollbar-color: #e8e5e5 #f1f1f1; /* thumb color, track color */}
+.sidebr{
+  position:fixed;
+  z-index:10;
+}
+@media (max-width:1000px){
+  .sidebr{
+    position:fixed;
+    /* visibility: hidden; */
+    z-index:10;
+  }
 }

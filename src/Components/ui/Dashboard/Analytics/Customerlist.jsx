@@ -15,21 +15,21 @@ function Customerlist() {
     //    fetchdata();
     // },[])
   return (
-    <div className=' w-full flex-grow flex flex-col gap-3 h-full'>
+    <div className=' min-w-screen flex-grow flex flex-col gap-3 h-full'>
         <div className='flex px-5 py-3 rounded-lg'>
-            <div className='flex-1 flex  gap-3'>
+            <div className='flex-1 flex  gap-3 min-w-40 px-2 gap-6'>
                 <p>Name</p>
                 <img src={arrow} className='mt-3 h-2'></img>
             </div>
-            <div className='flex-1 flex  gap-3'>
+            <div className='flex-1 flex  gap-3 min-w-60 px-2 gap-6'>
                 <p>Email</p>
                 <img src={arrow} className='mt-3 h-2'></img>
             </div>
-            <div className='flex-1 flex  gap-3'>
+            <div className='flex-1 flex  gap-3  gap-6 min-w-40'>
                 <p>Phone number</p>
                 <img src={arrow} className='mt-3 h-2'></img>
             </div>
-            <div className='flex-1 flex  gap-3'>
+            <div className='flex-1 flex  gap-3 px-2 gap-6 min-w-40'>
                <p>Gender</p>
                <img src={arrow} className='mt-3 h-2'></img>
             </div>
@@ -37,14 +37,14 @@ function Customerlist() {
         {customerdata.map((items)=>{
             return(
                 <div className='flex  px-5 py-3  rounded-lg bg-white items-center'>
-                    <div className='flex-1 flex flex-row gap-3'>
+                    <div className='flex-1 flex flex-row gap-3 min-w-40'>
                         <img src={items.img}></img>
                         <p>{items.name}</p>
                     </div>
-                    <div className='flex-1 '>
+                    <div className='flex-1 min-w-60'>
                         <p>{items.email}</p>
                     </div>
-                    <div className='flex-1'>
+                    <div className='flex-1 min-w-32'>
                         <p>{items.phoneNo}</p>
                     </div>
                     <div className='flex-1 flex justify-between items-center'>
