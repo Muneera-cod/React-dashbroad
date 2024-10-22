@@ -12,7 +12,7 @@ function Dashboard() {
 
   return (
        <>
-        <div style={{position:'fixed',zIndex:10}}>
+        <div className='sidebr' >
           <Sidebar sidebar={sidebar} setSidebar={setSidebar} handlesidebar={handlesidebar}/> 
         
         </div>
@@ -20,7 +20,7 @@ function Dashboard() {
         <div className={` w-14 h-screen ${sidebar?'':'w-16 h-screen'}`}></div>
        
       
-        <div className={`header bg-slate-200 w-full min-h-screen app-container flex ${sidebar?"":'header bg-slate-200  w-full min-h-screen app-container flex '}`}> 
+        <div className={`header w-full bg-slate-200 min-h-screen app-container flex overflow-auto scroll${sidebar?"":'header bg-slate-200  w-full min-h-screen app-container flex  overflow-auto scroll'}`}> 
          
          <Outlet sidebar={sidebar} setSidebar={setSidebar} handlesidebar={handlesidebar}/>
         </div>
